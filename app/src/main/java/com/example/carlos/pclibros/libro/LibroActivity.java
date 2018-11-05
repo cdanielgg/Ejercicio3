@@ -34,7 +34,7 @@ public class LibroActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LibroDetalleActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LibroInsertarActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,9 +1,7 @@
 package com.example.carlos.pclibros.libro;
 
-import android.os.Build;
-
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -13,9 +11,14 @@ import android.widget.EditText;
 import com.example.carlos.pclibros.R;
 import com.example.carlos.pclibros.constantes.G;
 import com.example.carlos.pclibros.pojos.Libro;
+import com.example.carlos.pclibros.proveedor.Contrato;
 import com.example.carlos.pclibros.proveedor.LibroProveedor;
 
-public class LibroDetalleActivity extends AppCompatActivity {
+public class LibroModificarActivity extends AppCompatActivity {
+
+    EditText editTextLibroTitulo;
+    EditText editTextLibroPaginas;
+    int libroId;
 
 
     @Override
@@ -26,6 +29,15 @@ public class LibroDetalleActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_detalle_activity);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);// se usa para mostrar la flecha para volver al padre de la activity
+
+        editTextLibroTitulo = (EditText) findViewById(R.id.editTextLibroTitulo);
+        editTextLibroPaginas = (EditText) findViewById(R.id.editTextLibroPaginas);
+
+        libroId = this.getIntent().getExtras().getInt(Contrato.Libro._ID);
+        Libro libro = LibroProveedor.readRecord(getContentResolver(),libroId);
+
+        editTextLibroTitulo.setText(libro.getTitulo());
+        editTextLibroPaginas.setText(libro.getPaginas());
 
 
     }
@@ -85,8 +97,8 @@ public class LibroDetalleActivity extends AppCompatActivity {
 
         }
         //introduce los datos en el proveedor de contenidos
-        Libro libro = new Libro(G.SIN_VALOR_INT, titulo, paginas);
-        LibroProveedor.insert(getContentResolver(),libro);
+        Libro libro = new Libro(libroId, titulo, paginas);
+        LibroProveedor.updateRecord(getContentResolver(),libro);
         // lo finaliza
         finish();
 

@@ -33,7 +33,18 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".libro.LibroDetalleActivity"
+        <activity android:name=".libro.LibroInsertarActivity"
+            android:parentActivityName=".libro.LibroActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".libro.LibroActivity" />
+
+        </activity>
+
+        <activity android:name=".libro.LibroModificarActivity"
             android:parentActivityName=".libro.LibroActivity"
             android:theme="@style/AppTheme.NoActionBar">
 

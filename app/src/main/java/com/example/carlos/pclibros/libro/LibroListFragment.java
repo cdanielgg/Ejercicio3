@@ -28,7 +28,6 @@ import com.amulyakhare.textdrawable.util.ColorGenerator;
 
 import com.example.carlos.pclibros.R;
 import com.example.carlos.pclibros.constantes.G;
-import com.example.carlos.pclibros.pojos.Libro;
 import com.example.carlos.pclibros.proveedor.Contrato;
 import com.example.carlos.pclibros.proveedor.LibroProveedor;
 
@@ -82,7 +81,7 @@ public class LibroListFragment extends ListFragment
 		switch (item.getItemId()){
 
 			case G.INSERTAR:
-				Intent intent = new Intent(getActivity(), LibroDetalleActivity.class);
+				Intent intent = new Intent(getActivity(), LibroInsertarActivity.class);
 				startActivity(intent);
 				break;
 
@@ -162,10 +161,19 @@ public class LibroListFragment extends ListFragment
 			switch (menuItem.getItemId()){
 				case R.id.menu_borrar:
 					int libroId = (Integer) viewSeleccionado.getTag();
-					LibroProveedor.delete(getActivity().getContentResolver(),libroId);
+					LibroProveedor.deleteRecord(getActivity().getContentResolver(),libroId);
+					//finaliza la imagen icono de borrar
+					mActionMode.finish();
+					break;
+
+				case R.id.menu_editar:
+					Intent intent = new Intent(getActivity(), LibroModificarActivity.class);
+					libroId = (Integer) viewSeleccionado.getTag();
+					intent.putExtra(Contrato.Libro._ID, libroId);
+					startActivity(intent);
 					break;
 			}
-
+			mActionMode.finish();
 			return false;
 		}
 
