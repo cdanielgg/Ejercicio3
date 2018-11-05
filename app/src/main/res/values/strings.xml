@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PCLibros</string>
+
+    <string name="sin_datos">Sin datos.</string>
+
+    <string name="progress_cargando_datos">Cargando datos&#8230;</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main3">Main3Activity</string>
+
+    <string name="libro_titutlo">Titulo</string>
+    <string name="libro_paginas">Paginas</string>
+    
+    
+    <string name="campo_requerido">Campo requerido, gracias.</string>
+
+
+</resources>
